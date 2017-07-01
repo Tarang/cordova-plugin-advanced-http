@@ -49,7 +49,7 @@
     "url": "https://github.com/silkimen/cordova-plugin-advanced-http/issues"
   },
   "homepage": "https://github.com/silkimen/cordova-plugin-advanced-http#readme",
-  "devDependencies": {
+  "dependencies": {
     "umd-tough-cookie": "2.3.2"
   }
 }
