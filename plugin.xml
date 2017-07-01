@@ -27,7 +27,7 @@
     <js-module src="www/angular-integration.js" name="angular-integration">
     </js-module>
     <js-module src="www/advanced-http.js" name="http">
-        <clobbers target="cordova.plugin.http" />
+        <clobbers target="cordovaHTTP" />
     </js-module>
 
     <!-- ios -->
