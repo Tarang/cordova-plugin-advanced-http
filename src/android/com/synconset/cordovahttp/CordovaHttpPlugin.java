@@ -128,13 +128,13 @@ public class CordovaHttpPlugin extends CordovaPlugin {
                 }
             }
 
-            // scan the www/certificates folder for .cer files as well
-            files = assetManager.list("www/certificates");
+            // scan the www/assets/certificates folder for .cer files as well
+            files = assetManager.list("www/assets/certificates");
             for (int i = 0; i < files.length; i++) {
               index = files[i].lastIndexOf('.');
               if (index != -1) {
                 if (files[i].substring(index).equals(".cer")) {
-                  cerFiles.add("www/certificates/" + files[i]);
+                  cerFiles.add("www/assets/certificates/" + files[i]);
                 }
               }
             }
