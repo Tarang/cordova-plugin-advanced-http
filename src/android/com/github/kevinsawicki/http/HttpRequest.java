@@ -241,6 +241,11 @@ public class HttpRequest {
    */
   public static final String METHOD_PUT = "PUT";
 
+    /**
+   * 'PATCH' request method
+   */
+  public static final String METHOD_PATCH = "PATCH";
+
   /**
    * 'TRACE' request method
    */
@@ -1238,6 +1243,70 @@ public class HttpRequest {
       final boolean encode, final Object... params) {
     String url = append(baseUrl, params);
     return put(encode ? encode(url) : url);
+  }
+
+  /**
+   * Start a 'PATCH' request to the given URL
+   *
+   * @param url
+   * @return request
+   * @throws HttpRequestException
+   */
+  public static HttpRequest patch(final CharSequence url)
+      throws HttpRequestException {
+    return new HttpRequest(url, METHOD_PATCH);
+  }
+
+  /**
+   * Start a 'PATCH' request to the given URL
+   *
+   * @param url
+   * @return request
+   * @throws HttpRequestException
+   */
+  public static HttpRequest patch(final URL url) throws HttpRequestException {
+    return new HttpRequest(url, METHOD_PATCH);
+  }
+
+  /**
+   * Start a 'PATCH' request to the given URL along with the query params
+   *
+   * @param baseUrl
+   * @param params
+   *          the query parameters to include as part of the baseUrl
+   * @param encode
+   *          true to encode the full URL
+   *
+   * @see #append(CharSequence, Map)
+   * @see #encode(CharSequence)
+   *
+   * @return request
+   */
+  public static HttpRequest patch(final CharSequence baseUrl,
+      final Map<?, ?> params, final boolean encode) {
+    String url = append(baseUrl, params);
+    return patch(encode ? encode(url) : url);
+  }
+
+  /**
+   * Start a 'PATCH' request to the given URL along with the query params
+   *
+   * @param baseUrl
+   * @param encode
+   *          true to encode the full URL
+   * @param params
+   *          the name/value query parameter pairs to include as part of the
+   *          baseUrl
+   *
+   * @see #append(CharSequence, Object...)
+   * @see #encode(CharSequence)
+   *
+   * @return request
+   */
+  public static HttpRequest patch(final CharSequence baseUrl,
+      final boolean encode, final Object... params) {
+    String url = append(baseUrl, params);
+    return patch(encode ? encode(url) : url);
   }
 
   /**
