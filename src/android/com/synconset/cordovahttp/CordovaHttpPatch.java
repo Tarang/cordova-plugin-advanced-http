@@ -15,8 +15,8 @@ import com.github.kevinsawicki.http.HttpRequest;
 import com.github.kevinsawicki.http.HttpRequest.HttpRequestException;
 
 class CordovaHttpPatch extends CordovaHttp implements Runnable {
-    public CordovaHttpPatch(String urlString, JSONObject data, String serializerName, JSONObject headers, CallbackContext callbackContext) {
-        super(urlString, data, serializerName, headers, callbackContext);
+    public CordovaHttpPatch(String urlString, JSONObject params, String serializerName, JSONObject headers, CallbackContext callbackContext) {
+        super(urlString, params, serializerName, headers, callbackContext);
     }
 
     @Override
@@ -40,13 +40,13 @@ class CordovaHttpPatch extends CordovaHttp implements Runnable {
             JSONObject response = new JSONObject();
 
             this.addResponseHeaders(request, response);
-            response.patch("status", code);
+            response.put("status", code);
 
             if (code >= 200 && code < 300) {
-                response.patch("data", body);
+                response.put("data", body);
                 this.getCallbackContext().success(response);
             } else {
-                response.patch("error", body);
+                response.put("error", body);
                 this.getCallbackContext().error(response);
             }
         } catch (JSONException e) {
